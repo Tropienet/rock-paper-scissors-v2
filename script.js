@@ -54,8 +54,18 @@ function playRound( playerChoice, computerChoice ) {
     return "Error";
 } 
 
-function game() {
-    for( let i = 0; i<5; i++ ) {
-        console.log( playRound( prompt(), getComputerChoice()));
-    }
-}
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
+
+rockButton.addEventListener("click", () => {
+    console.log("rock");
+});
+
+paperButton.addEventListener("click", () => {
+    console.log("paper");
+});
+
+scissorsButton.addEventListener("click", () => {
+    console.log("scissors");
+});
