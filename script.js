@@ -33,20 +33,26 @@ function playRound( playerChoice, computerChoice ) {
         return "tie";
     } else if( playerChoice.toLowerCase()==="paper" ) {
        if( computerChoice==="rock" ) {
+        updatePlayerScore()
         return "You win. Paper beats rock!";
        } else {
+        updateComputerScore()
         return "You lose. Scissors beat paper";
        }
     } else if( playerChoice.toLowerCase() === "rock" ) {
         if ( computerChoice === "scissors" ) {
+            updatePlayerScore()
             return "You win. Rock beats scissors";
         } else {
+            updateComputerScore()
             return "You lose. Paper beats rock";
         }
     } else {
         if( computerChoice === "paper" ) {
+            updatePlayerScore()
             return "You win. Scissors beat paper";
         } else {
+            updateComputerScore()
             return "You lose. Rock beats scissors";
         }
     }
@@ -54,18 +60,34 @@ function playRound( playerChoice, computerChoice ) {
     return "Error";
 } 
 
+function updatePlayerScore() {
+
+    const playerScore = document.querySelector("#player-points");
+
+   playerScore.textContent = parseInt(playerScore.textContent) + 1;
+
+}
+
+function updateComputerScore() {
+
+    const computerScore = document.querySelector("#computer-points");
+    
+    computerScore.textContent = parseInt(computerScore.textContent)+1;
+
+}
+
 const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
 
 rockButton.addEventListener("click", () => {
-    console.log("rock");
+    playRound("rock", getComputerChoice());
 });
 
 paperButton.addEventListener("click", () => {
-    console.log("paper");
+    playRound("paper", getComputerChoice());
 });
 
 scissorsButton.addEventListener("click", () => {
-    console.log("scissors");
+   playRound("scissors", getComputerChoice()) ;
 });
