@@ -66,6 +66,8 @@ function updatePlayerScore() {
 
    playerScore.textContent = parseInt(playerScore.textContent) + 1;
 
+    checkScore(parseInt(playerScore.textContent), "player" );
+
 }
 
 function updateComputerScore() {
@@ -73,6 +75,33 @@ function updateComputerScore() {
     const computerScore = document.querySelector("#computer-points");
     
     computerScore.textContent = parseInt(computerScore.textContent)+1;
+
+    checkScore(parseInt(computerScore.textContent), "computer" );
+
+}
+
+function announceWinner( scoreOwner ) {
+
+    const announcementContainer = document.querySelector("#announcement");
+    const winnerAnnouncement = document.createElement("p");
+
+    if(scoreOwner === "computer") {
+        winnerAnnouncement.textContent = "AI wins. Better luck next time!"
+    }else {
+        winnerAnnouncement.textContent = "You win. Congratulations!";
+    }
+
+    announcementContainer.appendChild(winnerAnnouncement);
+
+}
+
+function checkScore( score, scoreOwner ) {
+
+    if( score == 5 ) {
+
+        announceWinner( scoreOwner );
+
+    }
 
 }
 
